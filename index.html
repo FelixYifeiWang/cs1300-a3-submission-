@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A/B Testing -- Yifei Wang</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <h1>
+            A/B Testing
+        </h1>
+        <div class="text-content">
+            <p>
+                A/B testing is one of the most popular practices in product designing and management. 
+                It is is essential for optimizing engagement and user experience. 
+                By gathering quantitative feedback showing the two variants (A and B) to similar audiences simultaneously, it measures the effect on a predefined metric to make data-driven decisions.             .
+            </p>
+            <p>
+                In this project, we are using a medical appointment page as the case to apply A/B testing and analyze based on the data we gathered.
+                Version A is the original design of the webpage. Version B is my revised design. The changes are relatively small and in detail.
+            </p>
+        </div>
+        <h4>
+            Version A (original) raw data: <a href="https://drive.google.com/file/d/1w-u6_A57UZ5iAdgH8HV3CgpC1a93BFKp/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1w-u6_A57UZ5iAdgH8HV3CgpC1a93BFKp/view?usp=sharing</a>
+        </h4>
+        <h4>
+            Version B (my revision) raw data: <a href="https://drive.google.com/file/d/1JR7K6SGm996rN1LAWbyyJPL-fpcwXKTE/view?usp=sharing" target="_blank">https://drive.google.com/file/d/1JR7K6SGm996rN1LAWbyyJPL-fpcwXKTE/view?usp=sharing</a>
+        </h4>
+    </div>
+    <div class="section-divider"></div>
+    <div>
+        <h2>
+            Part 1: Data Collection
+        </h2>
+        <h3>
+            Original Version A Interface:
+        </h3>
+        <img src="2.png" alt="Original Page">
+        <h3>
+            Revised Version B Interface:
+        </h3>
+        <p>
+            A few changes have been made: 
+        </p>
+        <p>
+            1. Adjusted the font sizes and colors of the date information to emphasize the specific date over the month and year.
+        </p>
+        <p>
+            2. Modified the font weight and color of the text on buttons to enhance visibility.
+        </p>
+        <p>
+            3. Changed the color of the "Schedule Appointment" button to make it more distinct from others.
+        </p>
+        <p>
+            4. Added hovering effects on the information row and buttons to clearly indicate the mouse's position.
+        </p>
+        <img src="1.png" alt="Revised Page">
+        <h3>
+            Experiment:
+        </h3>
+        <p>
+            Participants were asked to schedule an appointment with Adam Ng, MD at Morristown Medical Center on April 23, 2024.
+            Throughout the task, data was collected on various metrics, including time spent on the page, time until the first click, distance of mouse movement, number of clicks, occurrence of misclicks, and task success.
+        </p>
+    </div>
+    <div class="section-divider"></div>
+    <div>
+        <h2>
+            Part 2: Analysis
+        </h2>
+        <h3>
+            Creating Hypotheses:
+        </h3>
+        <p>
+            Three data types have been selected to formulate hypotheses. These include:
+        </p>
+        <p>
+            <b>Misclick rate:</b> How often users click the wrong thing before they hit the right button.
+            <ul>
+                <li><b>Null Hypothesis:</b> Misclick rates are the same for both versions.
+                    <p>The prediction is version B will have fewer wrong clicks because its design helps focus better on the right spots.</p>
+                </li>
+                <li><b>Alternative Hypothesis:</b> Version B has fewer misclicks than version A.
+                    <p>The reasoning is the new design makes it clearer where to click, thanks to better layout of dates, buttons, and mouseover hints.</p>
+                </li>
+            </ul>
+        </p>
+        <p>
+            <b>Time on page:</b> How long each group spends on the site.
+            <ul>
+                <li><b>Null Hypothesis:</b> No difference in how long users stay on the site between the two versions.
+                    <p>The prediction is people will spend less time on version B because it's easier and faster to use.</p>
+                </li>
+                <li><b>Alternative Hypothesis:</b> People finish tasks quicker on version B.
+                    <p>The reasoning is the clearer design should not just help people click right but also do things faster.</p>
+                </li>
+            </ul>
+        </p>
+        <p>
+            <b>Success rate:</b> How many get it right the first time.
+            <ul>
+                <li><b>Null Hypothesis:</b> The first-try success rate is the same for both versions.
+                    <p>The prediction is more first-try successes with version B because it makes things clearer and easier.</p>
+                </li>
+                <li><b>Alternative Hypothesis:</b> More people succeed on the first try with version B.
+                    <p>The reasoning is the new version's better layout and instructions should simplify the task.</p>
+                </li>
+            </ul>
+        </p> 
+        <h3>
+            Raw Data of Selected Data Types:
+        </h3>       
+        <img src="3.png" alt="raw data A">
+        <img src="4.png" alt="raw data B">
+        <h3>
+            Run Statistical Tests on the Data:
+        </h3>
+        <h4>
+            Test on Misclick Rate:
+        </h4>
+        <p>
+            <b>Type of test:</b> chi-squared test, because it's comparing frequency and the data is categorical.
+        </p>
+        <p>
+            <b>Test result:</b> df = 1, χ^2 = 2.024, p-value = 0.155.
+        </p>
+        <img src="5.png" alt="test 1">
+        <p>
+            <b>Interpretion & conclusion:</b> 
+            The difference in misclick rates between versions A and B is not statistically significant, with a p-value of 0.155, which exceeds the 0.05 significance threshold. The chi-squared statistic of 2.024 with 1 degree of freedom indicates a discrepancy between observed and expected misclick frequencies, but it's not sufficient to reject the null hypothesis. Therefore, we conclude there's no significant difference in misclick rates between the versions.
+        </p>
+
+        <h4>
+            Test on Time on Page:
+        </h4>
+        <p>
+            <b>Type of test:</b> one-tailed t-test, because we have directional hypothesis on this continuous data.
+        </p>
+        <p>
+            <b>Test result:</b> df = 24.506, t-score = 3.932, p-value = 0.0003.
+        </p>
+        <img src="6.png" alt="test 1">
+        <p>
+            <b>Interpretion & conclusion:</b> The difference in the time spent on page between versions A and B is statistically significant, with a p-value of approximately 0.0003, well below the 0.05 threshold. The negative t-score of -3.932, with approximately 24.51 degrees of freedom, indicates that the average time spent on version B (about 9406 milliseconds) is significantly less than on version A (about 22325 milliseconds). Therefore, we reject the null hypothesis and conclude that users spend significantly less time on version B compared to version A.
+        </p>
+
+        <h4>
+            Test on Success Rate:
+        </h4>
+        <p>
+            <b>Type of test:</b> chi-squared test, because it's comparing frequency and the data is categorical.
+        </p>
+        <p>
+            <b>Test result:</b> df = 1, χ^2 = 1.738, p-value = 0.187.
+        </p>
+        <img src="7.png" alt="test 1">
+        <p>
+            <b>Interpretion & conclusion:</b> 
+            The difference in success rates between versions A and B is not statistically significant, with a p-value of 0.187, which exceeds the 0.05 significance threshold. The chi-squared statistic of 1.738 with 1 degree of freedom suggests a minor discrepancy between the observed and expected success frequencies, but this discrepancy is not enough to reject the null hypothesis. Therefore, we conclude that there is no significant difference in the success rates between the two versions.
+        </p>
+        
+        <h3>
+            Summary Statistics:
+        </h3>
+        <p>
+            In this A/B testing exercise, 23 data points were collected for version A and 21 for version B. 
+            From the tests conducted, we successfully rejected one of the three null hypotheses, indicating that the redesign indeed enhances users' efficiency in executing tasks. 
+            While the null hypotheses for the other two tests were not rejected, this is largely attributed to their low p-values. Since these data types are categorical, we cannot calculate their mean, median, and mode, but the percentage differences are noticeable.
+            The misclick rates for versions A and B are 26.09% and 9.52%, respectively. The success rates for versions A and B are 82.61% and 95.24%, respectively, both suggesting benefits from the redesign.
+            The low p-values are primarily due to the small sample size. Increasing the sample size should help us draw more meaningful conclusions.
+        </p>        
+    </div>
+    <div class="section-divider"></div>
+    <div>
+        <h2>
+            Part 3: Conclusions & Takeaways
+        </h2>
+        <p>
+            Through this A/B testing exercise, I gained valuable hands-on experience in analyzing quantitative data scientifically.
+            This approach allows us to draw more precise and convincing conclusions.
+        </p>
+        <p>
+            - Choosing the right metrics for data collection and analysis is crucial; otherwise, the entire test may lack relevance.
+        </p>
+        <p>
+            - Drawing meaningful conclusions from a small sample size is challenging.
+        </p>
+        <p>
+            - Analyzing user behavior is a highly scientific and accurate process.
+        </p>        
+    </div>
+</body>
+</html>
